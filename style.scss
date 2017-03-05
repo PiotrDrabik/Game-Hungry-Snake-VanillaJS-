@@ -1,0 +1,67 @@
+		$bg-color: #D3D3D3;
+		$main-color: #808080;
+		$txt-light: #FFFFFF;
+		$txt-dark: #000000;
+		#bggame	{
+			width: 800px;
+			height: 400px;
+			background-color: $bg-color;
+			
+			border-style: solid;
+			border-width: 33px 32px 202px 27px;
+			-moz-border-image: url(/assets/bgimage.png) 33 32 202 27 repeat;
+			-webkit-border-image: url(/assets/bgimage.png) 33 32 202 27 repeat;
+			-o-border-image: url(/assets/bgimage.png) 33 32 202 27 repeat;
+			border-image: url(/assets/bgimage.png) 33 32 202 27 fill repeat;
+			& > div:first-child {
+				z-index: 2;
+				border-radius: 50% 30%;
+				}
+		}
+		.snakepart {
+			width: 20px;
+			height: 20px;
+			background-color: #000000;
+			border: 1px dotted #808080;
+			z-index: 1;
+		}
+		.start {
+			top:200px;
+			left:400px;
+			position:fixed;
+		}
+		.coin {
+			border-radius: 50%;
+			width:15px;
+			height:15px;
+			position:fixed;	
+		}
+		#counter {
+			width: 200px;
+			height: 20px;
+			top: 450px;
+			position:fixed;
+			background-color: #808080;
+		}
+		#info {
+			width: 200px;
+			height: 140px;
+			top: 480px;
+			left: 620px;
+			position:fixed;
+			background-color: #808080;
+			& > p  {
+				color: white;
+			}
+		}
+		#author {
+			width: 200px;
+			height: 60px;
+			top: 560px;
+			position:fixed;
+			background-color: #808080;	
+			color: #FFFFFF;
+		}
+		body {
+			background-color: $bg-color;
+		}
