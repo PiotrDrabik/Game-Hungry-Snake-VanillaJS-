@@ -2,8 +2,11 @@
 
 - http://papoldesign.pl/snake/
 
+# Game rules
+
 - Collect green circles (1 = 10pts), avoid red.
 - Control: Use Numeric keys [1-9] to move the snake in 8 directions. You can also use Arrows in 4 directions.
+- Control (touch screen): Tap at the frame to move the snake in 4 directions.
 
 ![Game Hungry Snake](http://papoldesign.pl/cert/Hungry-snake.jpg)
 
@@ -23,4 +26,5 @@
 
 - http://www.papoldesign.pl 
 - https://www.behance.net/piotrdrabik
+
 
