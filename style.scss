@@ -21,8 +21,9 @@
 		.snakepart {
 			width: 20px;
 			height: 20px;
-			background-color: #000000;
-			border: 1px dotted #808080;
+			//background-color: #000000;
+			background-color: #8B4513;
+			border: 1px dotted $main-color;
 			z-index: 1;
 		}
 		.start {
@@ -41,7 +42,7 @@
 			height: 20px;
 			top: 450px;
 			position:fixed;
-			background-color: #808080;
+			background-color: $main-color;
 		}
 		#info {
 			width: 200px;
@@ -49,7 +50,7 @@
 			top: 480px;
 			left: 620px;
 			position:fixed;
-			background-color: #808080;
+			background-color: $main-color;
 			& > p  {
 				color: white;
 			}
@@ -59,9 +60,42 @@
 			height: 60px;
 			top: 560px;
 			position:fixed;
-			background-color: #808080;	
-			color: #FFFFFF;
+			background-color: $main-color;	
+			color: $txt-light;
 		}
 		body {
 			background-color: $bg-color;
+			// prevent scrolling
+			height: 100%;
+  			overflow: hidden;
+		}
+		
+		.touched {
+			background-color: transparent;
+			border-style:none;
+			position:fixed;
+		}
+		#up {
+			width: 800px;
+			height: 45px;
+			top: 0px;
+			left: 36px;
+		}
+		#down {
+			width: 800px;
+			height: 45px;
+			top: 440px;
+			left: 36px;
+		}
+		#tleft {
+			width: 35px;
+			height: 400px;
+			top: 40px;
+			left: 0px;
+		}
+		#tright {
+			width: 35px;
+			height: 400px;
+			top: 40px;
+			left: 835px;
 		}

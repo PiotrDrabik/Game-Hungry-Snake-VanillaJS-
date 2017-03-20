@@ -9,6 +9,11 @@
 			counter = document.querySelector("#counter"),
 			body = document.querySelector("body"),
 			head = document.querySelector("#bggame>div:first-child"),
+			tleft = document.querySelector("#tleft"),
+			tright = document.querySelector("#tright"),
+			tup = document.querySelector("#up"),
+			tdown = document.querySelector("#down"),
+			snakecolor = '#000000',
 			speed = 100,
 			curtop = 32,
 			curleft = 26,
@@ -65,7 +70,7 @@
 		function headcolour(colour) {
 			head.style.backgroundColor = colour;
 			setTimeout(function() {
-				head.style.backgroundColor = 'black';
+				head.style.backgroundColor = snakecolor;
 			}, 100);
 		}
 		function removecoin(index, pts) {
@@ -95,7 +100,6 @@
 					((tarray.top <= temparray2.bottom && tarray.bottom >= temparray2.bottom) &&
 						(tarray.left <= temparray2.right && tarray.right >= temparray2.right)))
 				{
-					console.log('hit');
 					if (pts[i].type == 'red') {
 						points -= 5;
 						counter.innerHTML = 'Result: ' + points + ' | speed: ' + Math.floor(speed/20);
@@ -138,21 +142,43 @@
 			direc.ver = ver; direc.hor = hor;
 			direc.vertail = vertail; direc.hortail = hortail;
 		}
+		
+		function arrows() {
+			let smallertail = 10;
+			tleft.addEventListener('touchend', function(e) {
+				keypress(0,1,0,smallertail);
+			}, false);
+			
+			tright.addEventListener('touchend', function(e) {
+				keypress(0,-1,0,-smallertail);
+			}, false);
+			
+			tup.addEventListener('touchend', function(e) {
+				keypress(1,0,smallertail,0);
+			}, false);
+			
+			tdown.addEventListener('touchend', function(e) {
+				keypress(-1,0,-smallertail,0);
+			}, false);
 
-		(function arrows() {
 			body.addEventListener("keydown", function(e) {
-				let smallertail = size/2;
 				  switch(e.key) {
 				  	case "ArrowUp":
+				  	case "8":
+				  	case "Up": //IE + Edge browser
 				  		keypress(1,0,smallertail,0); break;
 		    		case "ArrowDown":
+				    case "2":		    		
+		    		case "Down": //IE + Edge browser
 		    			keypress(-1,0,-smallertail,0); break;
 				    case "ArrowLeft":
+					case "4":
+				    case "Left": //IE + Edge browser
 				        keypress(0,1,0,smallertail); break;
 				    case "ArrowRight":
+				    case "Right": //IE + Edge browser
+				    case "6":				    
 				    	keypress(0,-1,0,-smallertail); break;
-				    case "8":
-				    	keypress(1,0,smallertail,0); break;
 				    case "3":
 				    	keypress(-1,-1,-smallertail,0); break;
 				    case "7":
@@ -161,19 +187,14 @@
 				    	keypress(1,-1,smallertail,0); break;
 				    case "1":
 				    	keypress(-1,1,-smallertail,0); break;
-				    case "6":
-				    	keypress(0,-1,0,-smallertail); break;
-				    case "4":
-				    	keypress(0,1,0,smallertail); break;
-				    case "2":
-				    	keypress(-1,0,-smallertail,0); break;
 				    case "a":
 				    	addtail();
 				        break;
 				}
 			});
-		})();
-		//window.onload = arrows();
+		};
+		window.onload = arrows();
+		head.style.backgroundColor = snakecolor;
 		snakemove(snake);
 		randomelement();
 		placecoin();

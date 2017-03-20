@@ -64,6 +64,11 @@
 		    counter = document.querySelector("#counter"),
 		    body = document.querySelector("body"),
 		    head = document.querySelector("#bggame>div:first-child"),
+		    tleft = document.querySelector("#tleft"),
+		    tright = document.querySelector("#tright"),
+		    tup = document.querySelector("#up"),
+		    tdown = document.querySelector("#down"),
+		    snakecolor = '#000000',
 		    speed = 100,
 		    curtop = 32,
 		    curleft = 26,
@@ -118,7 +123,7 @@
 		function headcolour(colour) {
 			head.style.backgroundColor = colour;
 			setTimeout(function () {
-				head.style.backgroundColor = 'black';
+				head.style.backgroundColor = snakecolor;
 			}, 100);
 		}
 		function removecoin(index, pts) {
@@ -145,7 +150,6 @@
 			for (var i in pts) {
 				temparray2 = checkarea(pts[i].top, pts[i].left, 15);
 				if (tarray.top <= temparray2.top && tarray.bottom >= temparray2.top && tarray.left <= temparray2.left && tarray.right >= temparray2.left || tarray.top <= temparray2.bottom && tarray.bottom >= temparray2.bottom && tarray.left <= temparray2.right && tarray.right >= temparray2.right) {
-					console.log('hit');
 					if (pts[i].type == 'red') {
 						points -= 5;
 						counter.innerHTML = 'Result: ' + points + ' | speed: ' + Math.floor(speed / 20);
@@ -189,20 +193,45 @@
 			direc.vertail = vertail;direc.hortail = hortail;
 		}
 
-		(function arrows() {
+		function arrows() {
+			var smallertail = 10;
+			tleft.addEventListener('touchend', function (e) {
+				keypress(0, 1, 0, smallertail);
+			}, false);
+
+			tright.addEventListener('touchend', function (e) {
+				keypress(0, -1, 0, -smallertail);
+			}, false);
+
+			tup.addEventListener('touchend', function (e) {
+				keypress(1, 0, smallertail, 0);
+			}, false);
+
+			tdown.addEventListener('touchend', function (e) {
+				keypress(-1, 0, -smallertail, 0);
+			}, false);
+
 			body.addEventListener("keydown", function (e) {
-				var smallertail = size / 2;
 				switch (e.key) {
 					case "ArrowUp":
+					case "8":
+					case "Up":
+						//IE + Edge browser
 						keypress(1, 0, smallertail, 0);break;
 					case "ArrowDown":
+					case "2":
+					case "Down":
+						//IE + Edge browser
 						keypress(-1, 0, -smallertail, 0);break;
 					case "ArrowLeft":
+					case "4":
+					case "Left":
+						//IE + Edge browser
 						keypress(0, 1, 0, smallertail);break;
 					case "ArrowRight":
+					case "Right": //IE + Edge browser
+					case "6":
 						keypress(0, -1, 0, -smallertail);break;
-					case "8":
-						keypress(1, 0, smallertail, 0);break;
 					case "3":
 						keypress(-1, -1, -smallertail, 0);break;
 					case "7":
@@ -211,19 +240,14 @@
 						keypress(1, -1, smallertail, 0);break;
 					case "1":
 						keypress(-1, 1, -smallertail, 0);break;
-					case "6":
-						keypress(0, -1, 0, -smallertail);break;
-					case "4":
-						keypress(0, 1, 0, smallertail);break;
-					case "2":
-						keypress(-1, 0, -smallertail, 0);break;
 					case "a":
 						addtail();
 						break;
 				}
 			});
-		})();
-		//window.onload = arrows();
+		};
+		window.onload = arrows();
+		head.style.backgroundColor = snakecolor;
 		snakemove(snake);
 		randomelement();
 		placecoin();
@@ -264,7 +288,7 @@
 
 
 	// module
-	exports.push([module.id, "#bggame {\n  width: 800px;\n  height: 400px;\n  background-color: #D3D3D3;\n  border-style: solid;\n  border-width: 33px 32px 202px 27px;\n  -moz-border-image: url(bgimage.png) 33 32 202 27 repeat;\n  -webkit-border-image: url(bgimage.png) 33 32 202 27 repeat;\n  -o-border-image: url(bgimage.png) 33 32 202 27 repeat;\n  border-image: url(bgimage.png) 33 32 202 27 fill repeat; }\n  #bggame > div:first-child {\n    z-index: 2;\n    border-radius: 50% 30%; }\n\n.snakepart {\n  width: 20px;\n  height: 20px;\n  background-color: #000000;\n  border: 1px dotted #808080;\n  z-index: 1; }\n\n.start {\n  top: 200px;\n  left: 400px;\n  position: fixed; }\n\n.coin {\n  border-radius: 50%;\n  width: 15px;\n  height: 15px;\n  position: fixed; }\n\n#counter {\n  width: 200px;\n  height: 20px;\n  top: 450px;\n  position: fixed;\n  background-color: #808080; }\n\n#info {\n  width: 200px;\n  height: 140px;\n  top: 480px;\n  left: 620px;\n  position: fixed;\n  background-color: #808080; }\n  #info > p {\n    color: white; }\n\n#author {\n  width: 200px;\n  height: 60px;\n  top: 560px;\n  position: fixed;\n  background-color: #808080;\n  color: #FFFFFF; }\n\nbody {\n  background-color: #D3D3D3; }\n", ""]);
+	exports.push([module.id, "#bggame {\n  width: 800px;\n  height: 400px;\n  background-color: #D3D3D3;\n  border-style: solid;\n  border-width: 33px 32px 202px 27px;\n  -moz-border-image: url(/assets/bgimage.png) 33 32 202 27 repeat;\n  -webkit-border-image: url(/assets/bgimage.png) 33 32 202 27 repeat;\n  -o-border-image: url(/assets/bgimage.png) 33 32 202 27 repeat;\n  border-image: url(/assets/bgimage.png) 33 32 202 27 fill repeat; }\n  #bggame > div:first-child {\n    z-index: 2;\n    border-radius: 50% 30%; }\n\n.snakepart {\n  width: 20px;\n  height: 20px;\n  background-color: #8B4513;\n  border: 1px dotted #808080;\n  z-index: 1; }\n\n.start {\n  top: 200px;\n  left: 400px;\n  position: fixed; }\n\n.coin {\n  border-radius: 50%;\n  width: 15px;\n  height: 15px;\n  position: fixed; }\n\n#counter {\n  width: 200px;\n  height: 20px;\n  top: 450px;\n  position: fixed;\n  background-color: #808080; }\n\n#info {\n  width: 200px;\n  height: 140px;\n  top: 480px;\n  left: 620px;\n  position: fixed;\n  background-color: #808080; }\n  #info > p {\n    color: white; }\n\n#author {\n  width: 200px;\n  height: 60px;\n  top: 560px;\n  position: fixed;\n  background-color: #808080;\n  color: #FFFFFF; }\n\nbody {\n  background-color: #D3D3D3;\n  height: 100%;\n  overflow: hidden; }\n\n.touched {\n  background-color: transparent;\n  border-style: none;\n  position: fixed; }\n\n#up {\n  width: 800px;\n  height: 45px;\n  top: 0px;\n  left: 36px; }\n\n#down {\n  width: 800px;\n  height: 45px;\n  top: 440px;\n  left: 36px; }\n\n#tleft {\n  width: 35px;\n  height: 400px;\n  top: 40px;\n  left: 0px; }\n\n#tright {\n  width: 35px;\n  height: 400px;\n  top: 40px;\n  left: 835px; }\n", ""]);
 
 	// exports
 
