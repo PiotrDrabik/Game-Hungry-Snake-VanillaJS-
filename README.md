@@ -1,6 +1,6 @@
 # Game: Hungry Snake (pure JavaScript = VanillaJS)
 
-- http://papoldesign.pl/snake/
+- http://papol.pl/snake/
 
 # Game rules
 
@@ -8,7 +8,7 @@
 - Control: Use Numeric keys [1-9] to move the snake in 8 directions. You can also use Arrows in 4 directions.
 - Control (touch screen): Tap at the frame to move the snake in 4 directions.
 
-![Game Hungry Snake](http://papoldesign.pl/cert/Hungry-snake.jpg)
+![Game Hungry Snake](http://papol.pl/cert/Hungry-snake.jpg)
 
 ## Code
 
@@ -24,7 +24,7 @@
 
 ## My websites
 
-- http://www.papoldesign.pl 
+- http://www.papol.pl 
 - https://www.behance.net/piotrdrabik
 
 
